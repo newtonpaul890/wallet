@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NexusPro | Institutional Crypto Trading</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- TradingView Charting Library -->
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+        
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <div class="preloader-logo-icon">N</div>
+            </div>
+            <div class="preloader-text">Loading NexusPro</div>
+            <div class="preloader-progress">
+                <div class="preloader-progress-bar" id="preloaderProgress"></div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-container">
+            <button class="auth-close" id="authCloseBtn">&times;</button>
+            
+            <!-- Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab">Account Login</button>
+                <button class="auth-tab" id="registerTab">Account Register</button>
+                <button class="auth-tab" id="forgotTab">Forgot Password</button>
+                <button class="auth-tab" id="supportTab">Contact Support</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="youremail@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="L@6sxq90$^*M!" autocomplete="off" required>
+                </div>
+                <button type="submit" class="btn btn-secondary">Login</button>
+                <div class="auth-error" id="loginError"></div>
+            </form>
+            
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="registerName" placeholder="John Cole" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="registerEmail" placeholder="youremail@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="registerPassword" placeholder="L@6sxq90$^*M!" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="registerConfirmPassword"placeholder="Enter the same password" autocomplete="off" required>
+                </div>
+                
+                <!-- Toggle Agreement -->
+                <div class="form-group toggle-group">
+                    <label class="form-group toggle-group" for="registerAgree">
+                    <span class="switch">
+                        <input type="checkbox" id="registerAgree" required>
+                        <span class="slider"></span>
+                    </span>
+                    <span class="toggle-text">Yes, I agree to the Terms & Conditions</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-secondary">Register</button>
+                <div class="auth-error" id="registerError"></div>
+            </form>
+            
+            <!-- Forgot Password Form -->
+            <form id="forgotForm" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label>Enter your registered email</label>
+                    <input type="email" id="forgotEmail" placeholder="youremail@email.com" required>
+                </div>
+                <button type="submit" class="btn btn-secondary">Send Reset Link</button>
+                <div class="auth-error" id="forgotError"></div>
+            </form>
+            
+            <!-- Support Form -->
+            <form id="supportForm" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email"  placeholder="youremail@email.com" id="supportEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <div class="select-wrapper">
+                        <select id="supportSubject" required>
+                            <option value="">Select a reason</option>
+                            <option value="account">Account Issues</option>
+                            <option value="trading">Trading Problems</option>
+                            <option value="deposit">Deposit/Withdrawal</option>
+                            <option value="security">Security Concern</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="supportMessage" rows="6" required placeholder="Please describe your issue in detail..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary">Send Message</button>
+                <div class="auth-error" id="supportError"></div>
+            </form>      
+        </div>
+    </div>
+
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-icon">N</div>
+                <div class="logo-text">NexusPro</div>
+            </div>
+            <button class="mobile-menu-close" id="menuCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-user">
+            <div class="mobile-menu-avatar">JD</div>
+            <div class="mobile-menu-user-info">
+                <h3>John Doe</h3>
+                <p>Verified Account</p>
+            </div>
+        </div>
+        
+        <div class="mobile-menu-items">
+            <a href="#" class="mobile-menu-item active" data-page="home">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="mobile-menu-item" data-page="markets">
+                <i class="fas fa-chart-simple"></i>
+                <span>Markets</span>
+            </a>
+            <a href="#" class="mobile-menu-item" data-page="trade">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Trade</span>
+            </a>
+            <a href="#" class="mobile-menu-item" data-page="portfolio">
+                <i class="fas fa-wallet"></i>
+                <span>Wallet</span>
+            </a>
+            <a href="#" class="mobile-menu-item" data-page="orders">
+                <i class="fas fa-history"></i>
+                <span>Orders</span>
+            </a>
+            <a href="#" class="mobile-menu-item" data-page="favorites">
+                <i class="fas fa-star"></i>
+                <span>Favorites</span>
+            </a>
+        </div>
+        
+        <div class="mobile-menu-divider"></div>
+        
+        <div class="mobile-menu-items">
+            <a href="#" class="mobile-menu-item" data-page="profile">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <a href="auth.html" class="mobile-menu-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <a href="auth.html" class="mobile-menu-item" data-page="security">
+                <i class="fas fa-shield-alt"></i>
+                <span>Security</span>
+            </a>
+            <a href="#" class="mobile-menu-item" data-page="help">
+                <i class="fas fa-question-circle"></i>
+                <span>Help Center</span>
+            </a>
+            <a href="#" class="mobile-menu-item" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-icon">N</div>
+                <div class="logo-text">NexusPro</div>
+            </div>
+        </div>
+
+        <div class="header-center">
+            <nav class="desktop-nav">
+                <div class="nav-item-wrapper">
+                    <a href="#" class="nav-main-item">
+                        <i class="fas fa-exchange-alt"></i>
+                        Trade
+                    </a>
+                    <div class="submenu">
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-copy"></i>
+                            Copy Trade
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-chart-line"></i>
+                            Signals
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-bolt"></i>
+                            Spot Trading
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-project-diagram"></i>
+                            Futures
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-item-wrapper">
+                    <a href="#" class="nav-main-item">
+                        <i class="fas fa-wallet"></i>
+                        Finance
+                    </a>
+                    <div class="submenu">
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-chart-pie"></i>
+                            Portfolio
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-arrow-down"></i>
+                            Deposit
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-arrow-up"></i>
+                            Withdraw
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            Exchange
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-item-wrapper">
+                    <a href="#" class="nav-main-item">
+                        <i class="fas fa-coins"></i>
+                        Earn
+                    </a>
+                    <div class="submenu">
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-chart-line"></i>
+                            Investment
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-gift"></i>
+                            Rewards
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-users"></i>
+                            Referral Program
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-piggy-bank"></i>
+                            Savings
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-item-wrapper">
+                    <a href="#" class="nav-main-item">
+                        <i class="fas fa-fire"></i>
+                        NFT
+                    </a>
+                    <div class="submenu">
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-store"></i>
+                            Marketplace
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-paint-brush"></i>
+                            Create
+                        </a>
+                        <a href="#" class="submenu-item">
+                            <i class="fas fa-medal"></i>
+                            Collections
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <button class="header-btn tooltip" id="searchBtn">
+                <i class="fas fa-search"></i>
+                <span class="tooltip-text">Search</span>
+            </button>
+            <button class="header-btn tooltip" id="notificationsBtn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge" id="notificationBadge">0</span>
+                <span class="tooltip-text">Notifications</span>
+            </button>
+            <button class="header-btn tooltip" id="settingsBtn">
+                <i class="fas fa-cog"></i>
+                <span class="tooltip-text">Settings</span>
+            </button>
+            <div class="user-avatar tooltip" id="userAvatar">
+                <i class="fas fa-user"></i>
+                <span class="tooltip-text">Account</span>
+            </div>
+            
+
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Dashboard Section -->
+        <section class="dashboard-section" id="dashboardSection">
+            <!-- Welcome & Performance Summary -->
+            <div class="dashboard-header">
+                <div class="welcome-banner">
+                    <h1>Welcome back, <span id="userName">Trader</span>!</h1>
+                    <p>Your portfolio is up <span class="positive" id="dailyChange">+2.34%</span> in the last 24 hours</p>
+                </div>
+                <div class="performance-summary">
+                    <div class="summary-card">
+                        <div class="summary-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="summary-content">
+                            <span class="summary-label">Portfolio Value</span>
+                            <span class="summary-value" id="portfolioValue">$42,580.25</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="summary-content">
+                            <span class="summary-label">24h Performance</span>
+                            <span class="summary-value positive" id="performanceChange">+$985.50</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="summary-content">
+                            <span class="summary-label">Assets</span>
+                            <span class="summary-value" id="assetsCount">8</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <div class="summary-content">
+                            <span class="summary-label">Ticket</span>
+                            <span class="summary-value" id="assetsCount">13</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats & Market Overview -->
+            <div class="dashboard-grid">
+                <!-- Portfolio Allocation Chart -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Portfolio Allocation</h3>
+                        <button class="card-action">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="allocationChart" height="250"></canvas>
+                    </div>
+                </div>
+
+                <!-- Performance Chart -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Performance (7D)</h3>
+                        <div class="time-filter">
+                            <select id="performanceFilter">
+                                <option value="7">7D</option>
+                                <option value="30">30D</option>
+                                <option value="90">90D</option>
+                                <option value="365">1Y</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="performanceChart" height="250"></canvas>
+                    </div>
+                </div>
+
+                <!-- Market Sentiment -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Market Sentiment</h3>
+                        <button class="card-action">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="sentiment-meter">
+                            <div class="meter-scale">
+                                <span>Fear</span>
+                                <span>Neutral</span>
+                                <span>Greed</span>
+                            </div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" id="sentimentFill"></div>
+                            </div>
+                            <div class="sentiment-value" id="sentimentValue">68 - Greed</div>
+                        </div>
+                        <div class="sentiment-indicators">
+                            <div class="indicator">
+                                <span class="indicator-label">Volatility</span>
+                                <span class="indicator-value high">High</span>
+                            </div>
+                            <div class="indicator">
+                                <span class="indicator-label">Market Momentum</span>
+                                <span class="indicator-value positive">Bullish</span>
+                            </div>
+                            <div class="indicator">
+                                <span class="indicator-label">BTC Dominance</span>
+                                <span class="indicator-value">42.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Watchlist -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Watchlist</h3>
+                        <button class="btn btn-outline btn-sm" id="editWatchlist">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="watchlist-container">
+                            <div class="watchlist-item">
+                                <div class="asset-info">
+                                    <div class="asset-icon">B</div>
+                                    <div class="asset-details">
+                                        <span class="asset-name">Bitcoin</span>
+                                        <span class="asset-symbol">BTC/USDT</span>
+                                    </div>
+                                </div>
+                                <div class="asset-price">$42,580.25</div>
+                                <div class="asset-change positive">+2.34%</div>
+                            </div>
+                            <div class="watchlist-item">
+                                <div class="asset-info">
+                                    <div class="asset-icon">E</div>
+                                    <div class="asset-details">
+                                        <span class="asset-name">Ethereum</span>
+                                        <span class="asset-symbol">ETH/USDT</span>
+                                    </div>
+                                </div>
+                                <div class="asset-price">$2,280.45</div>
+                                <div class="asset-change positive">+1.56%</div>
+                            </div>
+                            <div class="watchlist-item">
+                                <div class="asset-info">
+                                    <div class="asset-icon">S</div>
+                                    <div class="asset-details">
+                                        <span class="asset-name">Solana</span>
+                                        <span class="asset-symbol">SOL/USDT</span>
+                                    </div>
+                                </div>
+                                <div class="asset-price">$98.75</div>
+                                <div class="asset-change negative">-0.45%</div>
+                            </div>
+                            <div class="watchlist-item">
+                                <div class="asset-info">
+                                    <div class="asset-icon">A</div>
+                                    <div class="asset-details">
+                                        <span class="asset-name">Avalanche</span>
+                                        <span class="asset-symbol">AVAX/USDT</span>
+                                    </div>
+                                </div>
+                                <div class="asset-price">$35.20</div>
+                                <div class="asset-change positive">+3.21%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trading Opportunities -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Trading Opportunities</h3>
+                        <button class="card-action">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="opportunity-list">
+                            <div class="opportunity-item">
+                                <div class="opportunity-info">
+                                    <span class="opportunity-pair">BTC/USDT</span>
+                                    <span class="opportunity-type breakout">Breakout</span>
+                                </div>
+                                <div class="opportunity-details">
+                                    <span>Resistance: $42,800</span>
+                                    <span class="positive">Potential: +3.2%</span>
+                                </div>
+                            </div>
+                            <div class="opportunity-item">
+                                <div class="opportunity-info">
+                                    <span class="opportunity-pair">ETH/USDT</span>
+                                    <span class="opportunity-type oversold">Oversold</span>
+                                </div>
+                                <div class="opportunity-details">
+                                    <span>RSI: 28.6</span>
+                                    <span class="positive">Potential: +5.1%</span>
+                                </div>
+                            </div>
+                            <div class="opportunity-item">
+                                <div class="opportunity-info">
+                                    <span class="opportunity-pair">XRP/USDT</span>
+                                    <span class="opportunity-type volume">Volume Spike</span>
+                                </div>
+                                <div class="opportunity-details">
+                                    <span>Volume: +245%</span>
+                                    <span class="positive">Potential: +4.7%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News & Updates -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Market News</h3>
+                        <button class="card-action">
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="news-container">
+                            <div class="news-item">
+                                <div class="news-badge breaking">Breaking</div>
+                                <h4 class="news-title">Bitcoin ETF Approval Expected This Week</h4>
+                                <p class="news-excerpt">SEC officials hint at potential approval of spot Bitcoin ETF, causing market optimism.</p>
+                                <div class="news-meta">
+                                    <span class="news-time">2 hours ago</span>
+                                    <span class="news-source">CoinDesk</span>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <div class="news-badge analysis">Analysis</div>
+                                <h4 class="news-title">Ethereum Upgrade to Reduce Gas Fees by 40%</h4>
+                                <p class="news-excerpt">Next protocol upgrade expected to significantly improve network efficiency.</p>
+                                <div class="news-meta">
+                                    <span class="news-time">5 hours ago</span>
+                                    <span class="news-source">The Block</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Overview -->
+        <section class="market-overview" style="display: none;">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    Market Overview
+                </h2>
+                <div class="section-actions">
+                    <button class="btn btn-outline btn-sm" id="favoritesBtn">
+                        <i class="fas fa-star"></i>
+                        Favorites
+                    </button>
+                    <button class="btn btn-outline btn-sm" id="filtersBtn">
+                        <i class="fas fa-filter"></i>
+                        Filters
+                    </button>
+                    <button class="btn btn-outline btn-sm" id="customizeBtn">
+                        <i class="fas fa-sliders-h"></i>
+                        Customize
+                    </button>
+                </div>
+            </div>
+            <div class="ticker-wrapper">
+                <div class="ticker-tape" id="tickerTape">
+                    <div class="ticker-item loading">
+                        <span class="ticker-pair">Loading...</span>
+                        <span class="ticker-price">$--.--</span>
+                        <span class="ticker-change">--%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Trading View -->
+        <section class="trading-view" id="tradeSection" style="display: none;">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title" id="chartPair">BTC/USDT</div>
+                    <div class="chart-actions">
+                        
+                        <!-- Desktop version -->
+                        <div class="timeframe-selector">
+                            <button class="timeframe-btn active" data-timeframe="1">1m</button>
+                            <button class="timeframe-btn" data-timeframe="5">5m</button>
+                            <button class="timeframe-btn" data-timeframe="30">30m</button>
+                            <button class="timeframe-btn" data-timeframe="180">3H</button>
+                            <button class="timeframe-btn" data-timeframe="D">1D</button>
+                            <button class="timeframe-btn" data-timeframe="W">1W</button>
+                            <button class="timeframe-btn" data-timeframe="M">1M</button>
+                        </div>
+                        
+                        <!-- Mobile version -->
+                        <div class="timeframe-dropdown">
+                            <select class="timeframe-dropdown-select" id="timeframeDropdown">
+                                <option value="1">1 Minute</option>
+                                <option value="5">5 Minutes</option>
+                                <option value="30">30 Minutes</option>
+                                <option value="180">3 Hours</option>
+                                <option value="D">1 Day</option>
+                                <option value="W">1 Week</option>
+                                <option value="M">1 Month</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group toggle-group">
+                            <label for="indicatorsToggle">
+                                <span class="switch">
+                                    <input type="checkbox" id="indicatorsToggle">
+                                    <span class="slider"></span>
+                                </span>
+                                <span class="toggle-text">ANALYSIS</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div id="tv-chart"></div>
+                <div class="chart-logo" id="chartLogo">
+                    <img id="chartLogoImg" src="img/btc.png" alt="Logo">
+                </div>
+            </div>
+            
+            <div class="order-panel">
+                <div class="order-panel-section">
+                <div class="order-panel-header">
+                    <div class="order-panel-title">Trade</div>
+                    <div class="order-tabs">
+                    <div class="order-tab active" data-type="limit">Limit</div>
+                    <div class="order-tab" data-type="market">Market</div>
+                    <div class="order-tab" data-type="stop">Stop</div>
+                    </div>
+                </div>
+
+                <form class="order-form" id="orderForm">
+                    <div class="form-group">
+                    <label class="form-label">
+                        <span id="orderAction">Buy BTC</span>
+                        <span id="availableBalance">Available: --.-- USDT</span>
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="order-form-control" id="orderAmount" placeholder="0.00">
+                        <span class="input-append" id="orderAmountCurrency">BTC</span>
+                    </div>
+                    </div>
+
+                    <div class="form-group" id="priceGroup">
+                    <label class="form-label">Price</label>
+                    <div class="input-group">
+                        <input type="text" class="order-form-control" id="orderPrice" placeholder="0.00">
+                        <span class="input-append">USDT</span>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="form-label">Total</label>
+                    <div class="input-group">
+                        <input type="text" class="order-form-control" id="orderTotal" placeholder="0.00">
+                        <span class="input-append">USDT</span>
+                    </div>
+                    
+                    <div class="percentage-buttons">
+                        <button type="button" class="percent-btn" data-percent="25">25%</button>
+                        <button type="button" class="percent-btn" data-percent="50">50%</button>
+                        <button type="button" class="percent-btn" data-percent="75">75%</button>
+                        <button type="button" class="percent-btn" data-percent="100">100%</button>
+                    </div>
+                    </div>
+
+                    <div class="form-actions">
+                    <button type="button" class="btn btn-buy" id="buyBtn">Buy BTC</button>
+                    <button type="button" class="btn btn-sell" id="sellBtn">Sell BTC</button>
+                    </div>
+                </form>
+                </div>
+                
+                <div class="order-panel-section">
+                    <div class="order-panel-header">
+                        <div class="order-panel-title">Order Book</div>
+                        <div class="order-tabs">
+                            <div class="order-tab active" id="orderBookPair">BTC/USDT</div>
+                        </div>
+                    </div>
+                    <div class="order-book">
+                        <div class="order-book-header">
+                            <span>Price (USDT)</span>
+                            <span>Amount (BTC)</span>
+                        </div>
+                        <div class="order-book-rows" id="orderBookAsks">
+                            <!-- Asks will be populated by JavaScript -->
+                            <div class="order-book-row ask">
+                                <span class="price">--.--</span>
+                                <span>--.--</span>
+                            </div>
+                        </div>
+                        <div class="order-book-row spread">
+                            <span class="price">Spread: --%</span>
+                            <span id="lastPrice">--.--</span>
+                        </div>
+                        <div class="order-book-rows" id="orderBookBids">
+                            <!-- Bids will be populated by JavaScript -->
+                            <div class="order-book-row bid">
+                                <span class="price">--.--</span>
+                                <span>--.--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Markets Table -->
+        <section class="markets-section" id="marketSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-coins"></i>
+                        Markets
+                    </h2>
+                    <div class="market-table-actions">
+                        <button class="btn btn-outline btn-sm" id="searchBtn">
+                            <i class="fas fa-search"></i>
+                            Search
+                        </button>
+                        <button class="btn btn-outline btn-sm" id="marketFiltersBtn">
+                            <i class="fas fa-chart-simple"></i>
+                            Market
+                        </button>
+                        <button class="btn btn-outline btn-sm" id="watchlistBtn">
+                            <i class="fas fa-wallet"></i>
+                            Portfolio
+                        </button>
+                    </div>
+                </div>
+
+                <div class="market-table-scroll">
+                    <table class="market-table" id="marketTable">
+                        <thead>
+                            <tr>
+                                <th>Pair</th>
+                                <th>Price</th>
+                                <th>24h Change</th>
+                                <th>24h Volume</th>
+                                <th>Market Cap</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="marketTableBody">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 2rem;">
+                                    <div class="loading"></div> Loading market data...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section (New) -->
+        <section class="portfolio-section" id="portfolioSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-wallet"></i>
+                        My Portfolio
+                    </h2>
+                    <div class="market-table-actions">
+                        <button class="btn btn-primary btn-sm" id="depositBtn">
+                            <i class="fas fa-plus"></i>
+                            Deposit
+                        </button>
+                        <button class="btn btn-outline btn-sm" id="withdrawBtn">
+                            <i class="fas fa-minus"></i>
+                            Withdraw
+                        </button>
+                        <button class="btn btn-warning btn-sm" id="exchangeBtn">
+                            <i class="fas fa-exchange-alt"></i>
+                            Exchange
+                        </button>
+                    </div>
+                </div>
+                <table class="market-table" id="portfolioTable">
+                    <thead>
+                        <tr>
+                            <th>Asset</th>
+                            <th>Balance</th>
+                            <th>Value (USD)</th>
+                            <th>24h Change</th>
+                            <th>Allocation</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="portfolioTableBody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem;">
+                                <div class="loading"></div> Loading portfolio data...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Orders Section (New) -->
+        <section class="orders-section" id="ordersSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-history"></i>
+                        My Orders
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="order-tabs">
+                            <div class="order-tab active" data-type="open">Open Orders</div>
+                            <div class="order-tab" data-type="history">Order History</div>
+                        </div>
+                    </div>
+                </div>
+                <table class="market-table" id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>Pair</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Side</th>
+                            <th>Amount</th>
+                            <th>Total</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <tr>
+                            <td colspan="9" style="text-align: center; padding: 2rem;">
+                                <div class="loading"></div> Loading order data...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-page="home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item" data-page="markets">
+            <i class="fas fa-chart-simple"></i>
+            <span>Markets</span>
+        </a>
+        <a href="#" class="nav-item" data-page="trade">
+            <i class="fas fa-exchange-alt"></i>
+            <span>Trade</span>
+        </a>
+        <a href="#" class="nav-item" data-page="portfolio">
+            <i class="fas fa-wallet"></i>
+            <span>Portfolio</span>
+        </a>
+        <button class="menu-btn" id="menuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
