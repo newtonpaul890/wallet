@@ -381,9 +381,9 @@ function initMenu() {
     
     document.addEventListener('click', (e) => {
         if (body.classList.contains('menu-open')) {
-            if (!mobileMenu.contains(e.target) && e.target !== menuBtn) {
+            if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
                 toggleMenu();
-            }
+            }                
         }
     });
 }
