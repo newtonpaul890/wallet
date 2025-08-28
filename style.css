@@ -1699,14 +1699,25 @@
         }
 
         .menu-btn {
-            display: none;
+            display: none; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
             background: none;
             border: none;
-            color: var(--text-secondary);
-            font-size: 1.25rem;
             cursor: pointer;
-            padding: 0.5rem 1rem;
-            flex: 0 0 auto;
+            transition: var(--transition);
+            flex: 1;
+            padding: 0.5rem 0;
+            border-radius: 6px;
+            margin: 0 0.25rem;
+        }
+
+        .menu-btn i {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
         }
 
         /* Mobile Menu */
@@ -1907,7 +1918,7 @@
             }
             
             .menu-btn {
-                display: block;
+                display: flex;
             }
             
             .nav-item span {
