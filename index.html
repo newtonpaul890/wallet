@@ -51,7 +51,7 @@
                     <label>Password</label>
                     <input type="password" id="loginPassword" placeholder="L@6sxq90$^*M!" autocomplete="off" required>
                 </div>
-                <button type="submit" class="btn btn-secondary">Login</button>
+                <button type="submit" class="btn btn-secondary btn-full">Login</button>
                 <div class="auth-error" id="loginError"></div>
             </form>
             
@@ -85,7 +85,7 @@
                     </label>
                 </div>
                 
-                <button type="submit" class="btn btn-secondary">Register</button>
+                <button type="submit" class="btn btn-secondary btn-full">Register</button>
                 <div class="auth-error" id="registerError"></div>
             </form>
             
@@ -95,7 +95,7 @@
                     <label>Enter your registered email</label>
                     <input type="email" id="forgotEmail" placeholder="youremail@email.com" required>
                 </div>
-                <button type="submit" class="btn btn-secondary">Send Reset Link</button>
+                <button type="submit" class="btn btn-secondary btn-full">Send Reset Link</button>
                 <div class="auth-error" id="forgotError"></div>
             </form>
             
@@ -122,7 +122,7 @@
                     <label>Message</label>
                     <textarea id="supportMessage" rows="6" required placeholder="Please describe your issue in detail..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-secondary">Send Message</button>
+                <button type="submit" class="btn btn-secondary btn-full">Send Message</button>
                 <div class="auth-error" id="supportError"></div>
             </form>      
         </div>
@@ -342,10 +342,10 @@
                 <span class="notification-badge" id="notificationBadge">0</span>
                 <span class="tooltip-text">Notifications</span>
             </button>
-            <button class="header-btn tooltip" id="settingsBtn">
-                <i class="fas fa-cog"></i>
-                <span class="tooltip-text">Settings</span>
-            </button>
+            <button class="header-btn tooltip" id="themeToggleBtn">
+                <i class="fas fa-moon"></i>
+                <span class="tooltip-text">Change Theme</span>
+            </button>            
             <div class="user-avatar tooltip" id="userAvatar">
                 <i class="fas fa-user"></i>
                 <span class="tooltip-text">Account</span>
@@ -841,7 +841,7 @@
                             <i class="fas fa-plus"></i>
                             Deposit
                         </button>
-                        <button class="btn btn-outline btn-sm" id="withdrawBtn">
+                        <button class="btn btn-negative btn-sm" id="withdrawBtn">
                             <i class="fas fa-minus"></i>
                             Withdraw
                         </button>
