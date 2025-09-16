@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NexusPro | Institutional Crypto Trading</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- TradingView Charting Library -->
     <script src="https://s3.tradingview.com/tv.js"></script>
     <!-- Firebase SDK -->
@@ -35,10 +35,10 @@
             
             <!-- Tabs -->
             <div class="auth-tabs">
-                <button class="auth-tab active" id="loginTab">Account Login</button>
-                <button class="auth-tab" id="registerTab">Account Register</button>
-                <button class="auth-tab" id="forgotTab">Forgot Password</button>
-                <button class="auth-tab" id="supportTab">Contact Support</button>
+                <button class="auth-tab active" id="loginTab">Login</button>
+                <button class="auth-tab" id="registerTab">Register</button>
+                <button class="auth-tab" id="forgotTab">Recovery</button>
+                <button class="auth-tab" id="supportTab">Support</button>
             </div>
             
             <!-- Login Form -->
@@ -159,16 +159,44 @@
                 <span>Markets</span>
             </a>
             <a href="#" class="mobile-menu-item" data-page="trade">
-                <i class="fas fa-exchange-alt"></i>
+                <i class="fas fa-bolt"></i>
                 <span>Trade</span>
             </a>
             <a href="#" class="mobile-menu-item" data-page="portfolio">
                 <i class="fas fa-wallet"></i>
                 <span>Wallet</span>
             </a>
+            <a href="#" class="mobile-menu-item" data-page="signals">
+                <i class="fas fa-chart-line"></i>
+                <span>Signals</span>
+            </a>
+            <a href="#" class="mobile-menu-item" data-page="copy-trading">
+                <i class="fas fa-copy"></i>
+                <span>Copy Trading</span>
+            </a>
             <a href="#" class="mobile-menu-item" data-page="orders">
                 <i class="fas fa-history"></i>
                 <span>Orders</span>
+            </a>
+            <a href="#" class="mobile-menu-item" data-page="investment">
+                <i class="fas fa-chart-pie"></i>
+                <span>Investment</span>
+            </a>
+            <a href="#" class="mobile-menu-item" data-page="futures">
+                <i class="fas fa-project-diagram"></i>
+                <span>Futures</span>
+            </a>
+            <a href="#" class="mobile-menu-item" id="exchangeBtn">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Exchange</span>
+            </a>
+            <a href="#" class="mobile-menu-item" data-page="rewards">
+                <i class="fas fa-users"></i>
+                <span>Rewards</span>
+            </a>
+            <a href="#" class="mobile-menu-item">
+                <i class="fas fa-piggy-bank"></i>
+                <span>Savings</span>
             </a>
             <a href="#" class="mobile-menu-item" data-page="favorites">
                 <i class="fas fa-star"></i>
@@ -219,19 +247,19 @@
                         Trade
                     </a>
                     <div class="submenu">
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="copy-trading">
                             <i class="fas fa-copy"></i>
                             Copy Trade
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="signals">
                             <i class="fas fa-chart-line"></i>
                             Signals
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="trade">
                             <i class="fas fa-bolt"></i>
                             Spot Trading
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="futures">
                             <i class="fas fa-project-diagram"></i>
                             Futures
                         </a>
@@ -244,19 +272,19 @@
                         Finance
                     </a>
                     <div class="submenu">
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="portfolio">
                             <i class="fas fa-chart-pie"></i>
                             Portfolio
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" id="depositBtn">
                             <i class="fas fa-arrow-down"></i>
                             Deposit
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" id="withdrawBtn">
                             <i class="fas fa-arrow-up"></i>
                             Withdraw
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" id="exchangeBtn">
                             <i class="fas fa-exchange-alt"></i>
                             Exchange
                         </a>
@@ -264,24 +292,24 @@
                 </div>
 
                 <div class="nav-item-wrapper">
-                    <a href="#" class="nav-main-item">
+                    <a href="#" class="nav-main-item" data-page="security">
                         <i class="fas fa-coins"></i>
                         Earn
                     </a>
                     <div class="submenu">
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="investment">
                             <i class="fas fa-chart-line"></i>
                             Investment
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="rewards">
                             <i class="fas fa-gift"></i>
                             Rewards
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="referral">
                             <i class="fas fa-users"></i>
                             Referral Program
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="savings">
                             <i class="fas fa-piggy-bank"></i>
                             Savings
                         </a>
@@ -294,15 +322,15 @@
                         NFT
                     </a>
                     <div class="submenu">
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="nft-marketplace">
                             <i class="fas fa-store"></i>
                             Marketplace
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="create-nft">
                             <i class="fas fa-paint-brush"></i>
                             Create
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="nft-collection">
                             <i class="fas fa-medal"></i>
                             Collections
                         </a>
@@ -310,20 +338,24 @@
                 </div>
 
                 <div class="nav-item-wrapper">
-                    <a href="#" class="nav-main-item">
+                    <a href="#" class="nav-main-item" data-page="account">
                         <i class="fas fa-cog"></i>
                         Settings
                     </a>
                     <div class="submenu">
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="profile">
                             <i class="fas fa-user"></i>
                             Profile
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="security">
                             <i class="fas fa-shield-alt"></i>
                             2FA Security
                         </a>
-                        <a href="#" class="submenu-item">
+                        <a href="#" class="submenu-item" data-page="support-ticket">
+                            <i class="fas fa-question-circle"></i>
+                            Support Ticket
+                        </a>
+                        <a href="#" class="submenu-item" data-page="help-center">
                             <i class="fas fa-question-circle"></i>
                             Help Center
                         </a>
@@ -350,8 +382,6 @@
                 <i class="fas fa-user"></i>
                 <span class="tooltip-text">Account</span>
             </div>
-            
-
         </div>
     </header>
 
@@ -688,7 +718,7 @@
                 </div>
                 <div id="tv-chart"></div>
                 <div class="chart-logo" id="chartLogo">
-                    <img id="chartLogoImg" src="img/btc.png" alt="Logo">
+                    <img id="chartLogoImg" src="assets/img/btc.png" alt="Logo">
                 </div>
             </div>
             
@@ -739,8 +769,8 @@
                     </div>
 
                     <div class="form-actions">
-                    <button type="button" class="btn btn-buy" id="buyBtn">Buy BTC</button>
-                    <button type="button" class="btn btn-sell" id="sellBtn">Sell BTC</button>
+                        <button type="button" class="btn btn-buy" id="buyBtn">Buy BTC</button>
+                        <button type="button" class="btn btn-sell" id="sellBtn">Sell BTC</button>
                     </div>
                 </form>
                 </div>
@@ -912,6 +942,2312 @@
                 </table>
             </div>
         </section>
+
+        <!-- Investment Section -->
+        <section class="advanced-section" id="investmentSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-chart-pie"></i>
+                        Investment
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="section-tabs">
+                            <div class="section-tab active" data-tab="staking">Staking</div>
+                            <div class="section-tab" data-tab="savings">Savings</div>
+                            <div class="section-tab" data-tab="defi">DeFi Yield</div>
+                            <div class="section-tab" data-tab="vaults">Vaults</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">$24,580</div>
+                        <div class="stat-label">Total Invested</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value positive">+$1,245</div>
+                        <div class="stat-label">Total Earnings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8.7%</div>
+                        <div class="stat-label">Average APY</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">14</div>
+                        <div class="stat-label">Active Products</div>
+                    </div>
+                </div>
+                
+                <div class="card-grid">
+                    <div class="advanced-card">
+                        <div class="card-badge">Featured</div>
+                        <div class="card-header">
+                            <h3>ETH 2.0 Staking</h3>
+                            <div class="apy-badge positive">5.2% APY</div>
+                        </div>
+                        <div class="card-content">
+                            <p>Stake your Ethereum and earn rewards while supporting the network</p>
+                            <div class="card-details">
+                                <div class="detail">
+                                    <span>Minimum:</span>
+                                    <span>0.1 ETH</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Lock Period:</span>
+                                    <span>Flexible</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Risk:</span>
+                                    <span class="risk-low">Low</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary">Stake Now</button>
+                            <button class="btn btn-outline">Details</button>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-card">
+                        <div class="card-header">
+                            <h3>BTC Savings</h3>
+                            <div class="apy-badge positive">3.8% APY</div>
+                        </div>
+                        <div class="card-content">
+                            <p>Earn interest on your Bitcoin with flexible withdrawals</p>
+                            <div class="card-details">
+                                <div class="detail">
+                                    <span>Minimum:</span>
+                                    <span>0.01 BTC</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Lock Period:</span>
+                                    <span>None</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Risk:</span>
+                                    <span class="risk-low">Low</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary">Start Saving</button>
+                            <button class="btn btn-outline">Details</button>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-card">
+                        <div class="card-header">
+                            <h3>DeFi Yield Fund</h3>
+                            <div class="apy-badge positive">15.7% APY</div>
+                        </div>
+                        <div class="card-content">
+                            <p>Automated yield farming across multiple DeFi protocols</p>
+                            <div class="card-details">
+                                <div class="detail">
+                                    <span>Minimum:</span>
+                                    <span>$500</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Lock Period:</span>
+                                    <span>90 days</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Risk:</span>
+                                    <span class="risk-medium">Medium</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary">Invest Now</button>
+                            <button class="btn btn-outline">Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trading Signals Section -->
+        <section class="content-section" id="signalsSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-chart-line"></i>
+                        Trading Signals
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="signal-filters">
+                            <button class="btn btn-outline btn-sm active">All</button>
+                            <button class="btn btn-outline btn-sm">BTC</button>
+                            <button class="btn btn-outline btn-sm">ETH</button>
+                            <button class="btn btn-outline btn-sm">Alts</button>
+                        </div>
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-bell"></i>
+                            Alert Settings
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="signals-container">
+                    <div class="signal-card buy">
+                        <div class="signal-header">
+                            <div class="signal-type buy">BUY</div>
+                            <div class="signal-pair">BTC/USDT</div>
+                            <div class="signal-time">2 min ago</div>
+                        </div>
+                        
+                        <div class="signal-content">
+                            <div class="signal-details">
+                                <div class="detail">
+                                    <span class="label">Entry Zone</span>
+                                    <span class="value">$41,200 - $41,800</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Targets</span>
+                                    <span class="value">$43,500 | $45,200 | $47,000</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Stop Loss</span>
+                                    <span class="value">$39,800</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Leverage</span>
+                                    <span class="value">3x (Optional)</span>
+                                </div>
+                            </div>
+                            
+                            <div class="signal-chart" id="signalChart1"></div>
+                        </div>
+                        
+                        <div class="signal-footer">
+                            <div class="signal-strength">
+                                <span class="label">Confidence:</span>
+                                <div class="strength-meter">
+                                    <div class="meter-fill" style="width: 85%;"></div>
+                                </div>
+                                <span class="percentage">85%</span>
+                            </div>
+                            <button class="btn btn-sm btn-primary">Execute Trade</button>
+                        </div>
+                    </div>
+                    
+                    <div class="signal-card sell">
+                        <div class="signal-header">
+                            <div class="signal-type sell">SELL</div>
+                            <div class="signal-pair">ETH/USDT</div>
+                            <div class="signal-time">15 min ago</div>
+                        </div>
+                        
+                        <div class="signal-content">
+                            <div class="signal-details">
+                                <div class="detail">
+                                    <span class="label">Entry Zone</span>
+                                    <span class="value">$2,280 - $2,320</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Targets</span>
+                                    <span class="value">$2,180 | $2,120 | $2,050</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Stop Loss</span>
+                                    <span class="value">$2,380</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="label">Leverage</span>
+                                    <span class="value">2x (Optional)</span>
+                                </div>
+                            </div>
+                            
+                            <div class="signal-chart" id="signalChart2"></div>
+                        </div>
+                        
+                        <div class="signal-footer">
+                            <div class="signal-strength">
+                                <span class="label">Confidence:</span>
+                                <div class="strength-meter">
+                                    <div class="meter-fill" style="width: 78%;"></div>
+                                </div>
+                                <span class="percentage">78%</span>
+                            </div>
+                            <button class="btn btn-sm btn-primary">Execute Trade</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Futures Trading Section -->
+        <section class="content-section" id="futuresSection" style="display: none;">
+            <div class="trading-view">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <div class="chart-title">BTC/USDT Perpetual</div>
+                        <div class="chart-actions">
+                            <div class="timeframe-selector">
+                                <button class="timeframe-btn active" data-timeframe="1">1m</button>
+                                <button class="timeframe-btn" data-timeframe="5">5m</button>
+                                <button class="timeframe-btn" data-timeframe="15">15m</button>
+                                <button class="timeframe-btn" data-timeframe="60">1H</button>
+                                <button class="timeframe-btn" data-timeframe="240">4H</button>
+                            </div>
+                            <div class="futures-info">
+                                <span class="funding-rate positive">Funding: 0.0025%</span>
+                                <span class="index-price">Index: $42,150.25</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="futures-chart"></div>
+                </div>
+                
+                <div class="order-panel">
+                    <div class="order-panel-section">
+                        <div class="order-panel-header">
+                            <div class="order-panel-title">Futures Trade</div>
+                            <div class="order-tabs">
+                                <div class="order-tab active" data-type="limit">Limit</div>
+                                <div class="order-tab" data-type="market">Market</div>
+                                <div class="order-tab" data-type="stop">Stop</div>
+                            </div>
+                        </div>
+
+                        <form class="order-form">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <span>Buy BTC</span>
+                                    <span>Available: 5,000.00 USDT</span>
+                                </label>
+                                <div class="input-group">
+                                    <input type="text" class="order-form-control" placeholder="0.00">
+                                    <span class="input-append">BTC</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="priceGroup">
+                                <label class="form-label">Price</label>
+                                <div class="input-group">
+                                    <input type="text" class="order-form-control" placeholder="0.00">
+                                    <span class="input-append">USDT</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Total</label>
+                                <div class="input-group">
+                                    <input type="text" class="order-form-control" placeholder="0.00">
+                                    <span class="input-append">USDT</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Leverage</label>
+                                <div class="leverage-slider">
+                                    <input type="range" min="1" max="100" value="10" id="leverageRange">
+                                    <div class="leverage-bubble" id="leverageBubble">10x</div>
+                                    <div class="leverage-values">
+                                        <span>1x</span>
+                                        <span>100x</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-buy">Long BTC</button>
+                                <button type="button" class="btn btn-sell">Short BTC</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="order-panel-section">
+                        <div class="order-panel-header">
+                            <div class="order-panel-title">Positions</div>
+                        </div>
+                        <div class="positions-container">
+                            <div class="position-item long">
+                                <div class="position-header">
+                                    <span class="pair">BTC/USDT</span>
+                                    <span class="type long">LONG</span>
+                                </div>
+                                <div class="position-details">
+                                    <div class="detail">
+                                        <span>Size:</span>
+                                        <span>0.25 BTC</span>
+                                    </div>
+                                    <div class="detail">
+                                        <span>Entry Price:</span>
+                                        <span>$41,200.50</span>
+                                    </div>
+                                    <div class="detail">
+                                        <span>Leverage:</span>
+                                        <span>10x</span>
+                                    </div>
+                                    <div class="detail">
+                                        <span>Liq. Price:</span>
+                                        <span>$37,080.45</span>
+                                    </div>
+                                    <div class="detail">
+                                        <span>PNL:</span>
+                                        <span class="positive">+$237.50</span>
+                                    </div>
+                                </div>
+                                <div class="position-actions">
+                                    <button class="btn btn-sm btn-outline">Close</button>
+                                    <button class="btn btn-sm btn-outline">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Copy Trading Section -->
+        <section class="advanced-section" id="copyTradingSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-copy"></i>
+                        Copy Trading
+                    </h2>
+                    <div class="market-table-actions">
+                        <!-- Tabs -->
+                        <div class="section-tabs">
+                            <div class="section-tab active" data-tab="traders">Top Traders</div>
+                            <div class="section-tab" data-tab="my-copying">My Copying</div>
+                            <div class="section-tab" data-tab="strategies">Strategies</div>
+                            <div class="section-tab" data-tab="performance">Performance</div>
+                        </div>
+
+                        <!-- Button outside tabs -->
+                        <button class="btn btn-primary btn-sm strategy-btn">
+                            <i class="fas fa-plus" title="Become a Strategy Provider"></i>
+                            <span class="btn-text">Become a Strategy Provider</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">$1.24M</div>
+                        <div class="stat-label">Total Copied</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value positive">+8.7%</div>
+                        <div class="stat-label">Avg. Monthly Return</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">327</div>
+                        <div class="stat-label">Active Traders</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">14</div>
+                        <div class="stat-label">Copied Strategies</div>
+                    </div>
+                </div>
+                
+                <!-- Tab Content Container -->
+                <div class="tab-content-container">
+                    <!-- Top Traders Tab -->
+                    <div class="tab-content active" id="traders-tab">                
+                        <div class="card-grid">
+                            <div class="advanced-card">
+                                <div class="card-badge elite">Elite</div>
+                                <div class="trader-header">
+                                    <div class="trader-avatar">
+                                        <img src="https://i.pravatar.cc/60?img=1" alt="Trader">
+                                        <!-- Badges (top-left corner) -->
+                                        <div class="badge-container">
+                                            <span class="trader-badge gold">🥇</span>
+                                        </div>
+                                        <!-- Verification Badge (bottom-right) -->
+                                        <span class="verification-badge">
+                                            <img src="assets/img/verify-badge.png" alt="Verified">
+                                        </span>
+                                    </div>             
+                                    <div class="trader-info">
+                                        <h3>CryptoKing</h3>
+                                        <span class="trader-rank">#1 Top Performer</span>
+                                        <div class="trader-stats">
+                                            <span class="stat">82% Win Rate</span>
+                                            <span class="stat positive">+24.7% Monthly ROI</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="performance-chart mini-chart"></div>
+                                    <div class="trader-details">
+                                        <div class="detail">
+                                            <span>Strategy:</span>
+                                            <span>Swing Trading</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Avg. Hold Time:</span>
+                                            <span>3.2 days</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Risk Level:</span>
+                                            <span class="risk-medium">Medium</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Followers:</span>
+                                            <span>14,287</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="btn btn-outline">View Stats</button>
+                                    <button class="btn btn-primary">Copy Trade</button>
+                                </div>
+                            </div>
+                            
+                            <div class="advanced-card">
+                                <div class="trader-header">
+                                    <div class="trader-avatar">
+                                        <img src="https://i.pravatar.cc/60?img=3" alt="Trader">
+                                        <!-- Badges (top-left corner) -->
+                                        <div class="badge-container">
+                                            <span class="trader-badge silver">🥈</span>
+                                        </div>
+                                        <!-- Verification Badge (bottom-right) -->
+                                        <span class="verification-badge">
+                                            <img src="assets/img/verify-badge.png" alt="Verified">
+                                        </span>
+                                    </div>             
+                                    <div class="trader-info">
+                                        <h3>BitcoinOracle</h3>
+                                        <span class="trader-rank">#3 Risk Adjusted</span>
+                                        <div class="trader-stats">
+                                            <span class="stat">76% Win Rate</span>
+                                            <span class="stat negative">-18.3% Monthly ROI</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="performance-chart mini-chart"></div>
+                                    <div class="trader-details">
+                                        <div class="detail">
+                                            <span>Strategy:</span>
+                                            <span>Arbitrage</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Avg. Hold Time:</span>
+                                            <span>6.5 hours</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Risk Level:</span>
+                                            <span class="risk-low">Low</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Followers:</span>
+                                            <span>8,742</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="btn btn-primary">Copy Trade</button>
+                                    <button class="btn btn-outline">View Stats</button>
+                                </div>
+                            </div>
+                            
+                            <div class="advanced-card">
+                                <div class="card-badge verified">Verified</div>
+                                <div class="trader-header">
+                                    <div class="trader-avatar">
+                                        <img src="https://i.pravatar.cc/60?img=9" alt="Trader">
+                                        <!-- Badges (top-left corner) -->
+                                        <div class="badge-container">
+                                            <span class="trader-badge diamond">💎</span>
+                                        </div>
+                                        <!-- Verification Badge (bottom-right) -->
+                                        <span class="verification-badge">
+                                            <img src="assets/img/verify-badge.png" alt="Verified">
+                                        </span>
+                                    </div>                            
+                                    <div class="trader-info">
+                                        <h3>AltcoinQueen</h3>
+                                        <span class="trader-rank">#2 Alts Specialist</span>
+                                        <div class="trader-stats">
+                                            <span class="stat">79% Win Rate</span>
+                                            <span class="stat positive">+31.5% Monthly ROI</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="performance-chart mini-chart"></div>
+                                    <div class="trader-details">
+                                        <div class="detail">
+                                            <span>Strategy:</span>
+                                            <span>Momentum Trading</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Avg. Hold Time:</span>
+                                            <span>1.8 days</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Risk Level:</span>
+                                            <span class="risk-high">High</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Followers:</span>
+                                            <span>11,926</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="btn btn-primary">Copy Trade</button>
+                                    <button class="btn btn-outline">View Stats</button>
+                                </div>
+                            </div>
+                            
+                            <div class="advanced-card">
+                                <div class="card-badge pro">Professional</div>
+                                <div class="trader-header">
+                                    <div class="trader-avatar">
+                                        <img src="https://i.pravatar.cc/60?img=13" alt="Trader">
+                                        <!-- Badges (top-left corner) -->
+                                        <div class="badge-container">
+                                            <span class="trader-badge bronze">🥉</span>
+                                        </div>
+                                        <!-- Verification Badge (bottom-right) -->
+                                        <span class="verification-badge">
+                                            <img src="assets/img/verify-badge.png" alt="Verified">
+                                        </span>
+                                    </div>             
+                                    <div class="trader-info">
+                                        <h3>
+                                        EthereumSailor
+                                            <span class="verify-badge-inline pro">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M22.5 12l-2.12 1.65.55 2.67-2.43.95-1.08 2.38-2.63-.26-1.79 1.89-1.79-1.89-2.63.26-1.08-2.38-2.43-.95.55-2.67L1.5 12l2.12-1.65-.55-2.67 2.43-.95 1.08-2.38 2.63.26L12 2.5l1.79 1.89 2.63-.26 1.08 2.38 2.43.95-.55 2.67L22.5 12zM10.5 16l7-7-1.41-1.41L10.5 13.17 7.91 10.6 6.5 12l4 4z"/>
+                                                </svg>
+                                            </span>
+                                        </h3>
+                                        <span class="trader-rank">#4 Risk Adjusted</span>
+                                        <div class="trader-stats">
+                                            <span class="stat">86% Win Rate</span>
+                                            <span class="stat negative">-1.35% Monthly ROI</span>
+                                        </div>
+                                    </div>
+                                    <!--<button class="btn btn-primary btn-full">Copy</button>-->
+                                </div>
+                                <div class="card-content">
+                                    <div class="performance-chart mini-chart"></div>
+                                    <div class="trader-details">
+                                        <!--<div class="detail">
+                                            <span>Win Rate:</span>
+                                            <span>86%</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Monthly ROI:</span>
+                                            <span class="roi-low">-1.35%</span>
+                                        </div>-->
+                                        <div class="detail">
+                                            <span>Strategy:</span>
+                                            <span>Moderate</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Avg. Hold Time:</span>
+                                            <span>4.5 hours</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Risk Level:</span>
+                                            <span class="risk-medium">Medium</span>
+                                        </div>
+                                        <div class="detail">
+                                            <span>Followers:</span>
+                                            <span>2,452</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="btn btn-outline btn-full">View Stats</button>
+                                    <button class="btn btn-primary btn-full">Copy Trade</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- My Copying Tab -->
+                    <div class="tab-content" id="my-copying-tab">
+                        <div class="filters-row">
+                            <div class="filter-group">
+                                <label>Status:</label>
+                                <select class="filter-select">
+                                    <option value="all">All</option>
+                                    <option value="active">Active</option>
+                                    <option value="paused">Paused</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Sort by:</label>
+                                <select class="filter-select">
+                                    <option value="recent">Most Recent</option>
+                                    <option value="profit">Highest Profit</option>
+                                    <option value="amount">Investment Amount</option>
+                                </select>
+                            </div>
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search copied strategies...">
+                            </div>
+                        </div>
+                        
+                        <div class="copied-list">
+                            <div class="copied-item">
+                                <div class="copied-header">
+                                    <div class="trader-info-compact">
+                                        <img src="https://i.pravatar.cc/40?img=5" alt="Trader" class="trader-avatar-sm">
+                                        <div>
+                                            <h4>BitcoinOracle</h4>
+                                            <span class="trader-rank">Swing Trading • 76% Win Rate</span>
+                                        </div>
+                                    </div>
+                                    <div class="copied-status active">Active</div>
+                                </div>
+                                
+                                <div class="copied-details">
+                                    <div class="detail-item">
+                                        <span class="label">Copied Since</span>
+                                        <span class="value">Oct 15, 2023</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Investment</span>
+                                        <span class="value">$2,500.00</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Profit/Loss</span>
+                                        <span class="value positive">+$384.25</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">ROI</span>
+                                        <span class="value positive">+15.37%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="copied-actions">
+                                    <button class="btn btn-outline btn-sm">
+                                        <i class="fas fa-pause"></i> Pause
+                                    </button>
+                                    <button class="btn btn-outline btn-sm">
+                                        <i class="fas fa-chart-line"></i> Details
+                                    </button>
+                                    <button class="btn btn-negative btn-sm">
+                                        <i class="fas fa-times"></i> Stop
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="copied-item">
+                                <div class="copied-header">
+                                    <div class="trader-info-compact">
+                                        <img src="https://i.pravatar.cc/40?img=8" alt="Trader" class="trader-avatar-sm">
+                                        <div>
+                                            <h4>AltcoinQueen</h4>
+                                            <span class="trader-rank">Momentum Trading • 79% Win Rate</span>
+                                        </div>
+                                    </div>
+                                    <div class="copied-status paused">Paused</div>
+                                </div>
+                                
+                                <div class="copied-details">
+                                    <div class="detail-item">
+                                        <span class="label">Copied Since</span>
+                                        <span class="value">Sep 28, 2023</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Investment</span>
+                                        <span class="value">$1,800.00</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Profit/Loss</span>
+                                        <span class="value negative">-$126.50</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">ROI</span>
+                                        <span class="value negative">-7.03%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="copied-actions">
+                                    <button class="btn btn-primary btn-sm">
+                                        <i class="fas fa-play"></i> Resume
+                                    </button>
+                                    <button class="btn btn-outline btn-sm">
+                                        <i class="fas fa-chart-line"></i> Details
+                                    </button>
+                                    <button class="btn btn-negative btn-sm">
+                                        <i class="fas fa-times"></i> Stop
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="empty-state" style="display: none;">
+                            <i class="fas fa-user-friends"></i>
+                            <h3>No Active Copying</h3>
+                            <p>You haven't started copying any traders yet. Browse our top traders to get started.</p>
+                            <button class="btn btn-primary">Explore Top Traders</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Strategies Tab -->
+                    <div class="tab-content" id="strategies-tab">
+                        <div class="strategies-filters">
+                            <div class="filter-tabs">
+                                <button class="filter-tab active">All Strategies</button>
+                                <button class="filter-tab">Trend Following</button>
+                                <button class="filter-tab">Mean Reversion</button>
+                                <button class="filter-tab">Arbitrage</button>
+                                <button class="filter-tab">Swing Trading</button>
+                            </div>
+                            
+                            <div class="strategy-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search strategies...">
+                            </div>
+                        </div>
+                        
+                        <div class="strategies-grid">
+                            <div class="strategy-card">
+                                <div class="strategy-header">
+                                    <h3>Golden Cross EMA</h3>
+                                    <span class="strategy-badge popular">Popular</span>
+                                </div>
+                                <div class="strategy-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-chart-line"></i> Trend Following
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-clock"></i> 2-5 day holds
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-bolt"></i> 78% Success Rate
+                                    </span>
+                                </div>
+                                <p class="strategy-desc">
+                                    Identifies bullish momentum when short-term EMA crosses above long-term EMA with volume confirmation.
+                                </p>
+                                
+                                <div class="strategy-stats">
+                                    <div class="stat">
+                                        <span class="value positive">+22.4%</span>
+                                        <span class="label">Avg. Monthly Return</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="value">14.2%</span>
+                                        <span class="label">Max Drawdown</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="value">327</span>
+                                        <span class="label">Active Users</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="strategy-actions">
+                                    <button class="btn btn-outline">View Details</button>
+                                    <button class="btn btn-primary">Apply Strategy</button>
+                                </div>
+                            </div>
+                            
+                            <div class="strategy-card">
+                                <div class="strategy-header">
+                                    <h3>RSI Divergence</h3>
+                                    <span class="strategy-badge new">New</span>
+                                </div>
+                                <div class="strategy-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-retweet"></i> Mean Reversion
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-clock"></i> 1-3 day holds
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-bolt"></i> 72% Success Rate
+                                    </span>
+                                </div>
+                                <p class="strategy-desc">
+                                    Detects divergences between price and RSI momentum to identify potential reversal points.
+                                </p>
+                                
+                                <div class="strategy-stats">
+                                    <div class="stat">
+                                        <span class="value positive">+15.8%</span>
+                                        <span class="label">Avg. Monthly Return</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="value">9.5%</span>
+                                        <span class="label">Max Drawdown</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="value">148</span>
+                                        <span class="label">Active Users</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="strategy-actions">
+                                    <button class="btn btn-outline">View Details</button>
+                                    <button class="btn btn-primary">Apply Strategy</button>
+                                </div>
+                            </div>
+                            
+                            <div class="strategy-card">
+                                <div class="strategy-header">
+                                    <h3>Volume Spike</h3>
+                                    <span class="strategy-badge">Volume-based</span>
+                                </div>
+                                <div class="strategy-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-chart-bar"></i> Breakout
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-clock"></i> Intraday
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-bolt"></i> 68% Success Rate
+                                    </span>
+                                </div>
+                                <p class="strategy-desc">
+                                    Identifies breakout opportunities based on unusual volume spikes with price confirmation.
+                                </p>
+                                
+                                <div class="strategy-stats">
+                                    <div class="stat">
+                                        <span class="value positive">+18.3%</span>
+                                        <span class="label">Avg. Monthly Return</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="value">12.7%</span>
+                                        <span class="label">Max Drawdown</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="value">204</span>
+                                        <span class="label">Active Users</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="strategy-actions">
+                                    <button class="btn btn-outline">View Details</button>
+                                    <button class="btn btn-primary">Apply Strategy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Performance Tab -->
+                    <div class="tab-content" id="performance-tab">
+                        <div class="performance-header">
+                            <div class="time-filter">
+                                <button class="time-btn active">1W</button>
+                                <button class="time-btn">1M</button>
+                                <button class="time-btn">3M</button>
+                                <button class="time-btn">6M</button>
+                                <button class="time-btn">1Y</button>
+                                <button class="time-btn">All</button>
+                            </div>
+                            
+                            <div class="export-actions">
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fas fa-download"></i> Export CSV
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="performance-chart-container">
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-line"></i>
+                                <p>Performance chart will be displayed here</p>
+                            </div>
+                        </div>
+                        
+                        <div class="performance-metrics">
+                            <div class="metric-card">
+                                <div class="metric-value positive">+24.7%</div>
+                                <div class="metric-label">Total Return</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">12.4%</div>
+                                <div class="metric-label">Best Month</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value negative">-8.3%</div>
+                                <div class="metric-label">Worst Month</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">0.87</div>
+                                <div class="metric-label">Sharpe Ratio</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">15.2%</div>
+                                <div class="metric-label">Max Drawdown</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">76%</div>
+                                <div class="metric-label">Win Rate</div>
+                            </div>
+                        </div>
+                        
+                        <div class="performance-table">
+                            <h3>Copy Trading History</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Trader</th>
+                                        <th>Strategy</th>
+                                        <th>Duration</th>
+                                        <th>Investment</th>
+                                        <th>Profit/Loss</th>
+                                        <th>ROI</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="trader-info-compact">
+                                                <img src="https://i.pravatar.cc/30?img=5" alt="Trader" class="trader-avatar-sm">
+                                                <span>BitcoinOracle</span>
+                                            </div>
+                                        </td>
+                                        <td>Swing Trading</td>
+                                        <td>45 days</td>
+                                        <td>$2,500.00</td>
+                                        <td class="positive">+$384.25</td>
+                                        <td class="positive">+15.37%</td>
+                                        <td><span class="status-badge active">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="trader-info-compact">
+                                                <img src="https://i.pravatar.cc/30?img=8" alt="Trader" class="trader-avatar-sm">
+                                                <span>AltcoinQueen</span>
+                                            </div>
+                                        </td>
+                                        <td>Momentum Trading</td>
+                                        <td>22 days</td>
+                                        <td>$1,800.00</td>
+                                        <td class="negative">-$126.50</td>
+                                        <td class="negative">-7.03%</td>
+                                        <td><span class="status-badge paused">Paused</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="trader-info-compact">
+                                                <img src="https://i.pravatar.cc/30?img=11" alt="Trader" class="trader-avatar-sm">
+                                                <span>DeFiMaster</span>
+                                            </div>
+                                        </td>
+                                        <td>Arbitrage</td>
+                                        <td>90 days</td>
+                                        <td>$3,200.00</td>
+                                        <td class="positive">+$623.40</td>
+                                        <td class="positive">+19.48%</td>
+                                        <td><span class="status-badge completed">Completed</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+                
+            document.addEventListener('DOMContentLoaded', function() {
+                const tabs = document.querySelectorAll('.section-tab');
+                const tabContents = document.querySelectorAll('.tab-content');
+                
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        const tabId = this.dataset.tab;
+                        
+                        tabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        tabContents.forEach(content => {
+                            content.classList.remove('active');
+                            if (content.id === `${tabId}-tab`) {
+                                content.classList.add('active');
+                            }
+                        });
+                    });
+                });
+                
+                const filterTabs = document.querySelectorAll('.filter-tab');
+                filterTabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        filterTabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+                
+                const timeButtons = document.querySelectorAll('.time-btn');
+                timeButtons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        timeButtons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+            });
+        </script>        
+
+        <!-- Rewards Section -->
+        <section class="advanced-section" id="rewardsSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-gift"></i>
+                        Rewards Center
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="section-tabs">
+                            <div class="section-tab active" data-tab="missions">Missions</div>
+                            <div class="section-tab" data-tab="rewards">Rewards</div>
+                            <div class="section-tab" data-tab="vip">VIP Club</div>
+                            <div class="section-tab" data-tab="referral">Referral</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">4,250</div>
+                        <div class="stat-label">Reward Points</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">Gold</div>
+                        <div class="stat-label">VIP Level</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Completed Missions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">Referred Friends</div>
+                    </div>
+                </div>
+                
+                <div class="profile-container">
+                    <div class="form-card">
+                        <h3>VIP Benefits</h3>
+                        <div class="vip-level">
+                            <div class="vip-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                                <div class="vip-labels">
+                                    <span>Silver</span>
+                                    <span>Gold</span>
+                                    <span>Platinum</span>
+                                    <span>Diamond</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="vip-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-percentage"></i>
+                                <div class="benefit-info">
+                                    <h4>Fee Discounts</h4>
+                                    <p>Up to 25% off trading fees</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-coins"></i>
+                                <div class="benefit-info">
+                                    <h4>Higher APY</h4>
+                                    <p>Increased earnings on savings</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-headset"></i>
+                                <div class="benefit-info">
+                                    <h4>Priority Support</h4>
+                                    <p>24/7 dedicated support line</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-gift"></i>
+                                <div class="benefit-info">
+                                    <h4>Exclusive Rewards</h4>
+                                    <p>Special gifts and promotions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>Missions & Rewards</h3>
+                        <div class="missions-list">
+                            <div class="mission-item completed">
+                                <div class="mission-info">
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <h4>Complete first trade</h4>
+                                        <p>Make your first trade on NexusPro</p>
+                                    </div>
+                                </div>
+                                <div class="mission-reward">+50 pts</div>
+                            </div>
+                            
+                            <div class="mission-item">
+                                <div class="mission-info">
+                                    <i class="fas fa-spinner"></i>
+                                    <div>
+                                        <h4>Trade $1,000 volume</h4>
+                                        <p>Reach $1,000 in trading volume</p>
+                                        <div class="mission-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 64%;"></div>
+                                            </div>
+                                            <span>$640/$1,000</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mission-reward">+100 pts</div>
+                            </div>
+                            
+                            <div class="mission-item">
+                                <div class="mission-info">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <h4>Refer a friend</h4>
+                                        <p>Invite friends to join NexusPro</p>
+                                    </div>
+                                </div>
+                                <div class="mission-reward">+500 pts</div>
+                            </div>
+                        </div>
+                        
+                        <div class="rewards-shop">
+                            <h4>Available Rewards</h4>
+                            <div class="rewards-grid">
+                                <div class="reward-item">
+                                    <div class="reward-icon">
+                                        <i class="fas fa-percentage"></i>
+                                    </div>
+                                    <h5>10% Fee Discount</h5>
+                                    <p>30 days of reduced trading fees</p>
+                                    <div class="reward-cost">1,000 pts</div>
+                                </div>
+                                
+                                <div class="reward-item">
+                                    <div class="reward-icon">
+                                        <i class="fas fa-bitcoin"></i>
+                                    </div>
+                                    <h5>$10 BTC Voucher</h5>
+                                    <p>Get $10 worth of Bitcoin</p>
+                                    <div class="reward-cost">1,200 pts</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Profile Section -->
+        <section class="advanced-section" id="profileSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-user"></i>
+                        Advanced Profile
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="section-tabs">
+                            <div class="section-tab active" data-tab="overview">Overview</div>
+                            <div class="section-tab" data-tab="security">Security</div>
+                            <div class="section-tab" data-tab="preferences">Preferences</div>
+                            <div class="section-tab" data-tab="api">API</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-container">
+                    <div class="form-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img src="https://i.pravatar.cc/100?img=5" alt="Profile">
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fas fa-camera"></i>
+                                    Change
+                                </button>
+                            </div>
+                            <div class="profile-info">
+                                <h3>John Doe</h3>
+                                <p class="text-secondary">Verified Account</p>
+                                <p class="text-secondary">john.doe@example.com</p>
+                                <p class="text-secondary">Member since Jan 2023</p>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">42</span>
+                                <span class="stat-label">Total Trades</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value positive">+24.7%</span>
+                                <span class="stat-label">Avg. ROI</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">$24,580</span>
+                                <span class="stat-label">Portfolio Value</span>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-verification">
+                            <h4>Account Verification</h4>
+                            <div class="verification-item completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Email Verification</span>
+                            </div>
+                            <div class="verification-item completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Phone Verification</span>
+                            </div>
+                            <div class="verification-item">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>Identity Verification</span>
+                                <button class="btn btn-outline btn-sm">Verify</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>Personal Information</h3>
+                        <form class="modal-form">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" value="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" value="john.doe@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" value="+1 (555) 123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label>Country</label>
+                                <select>
+                                    <option selected>United States</option>
+                                    <option>United Kingdom</option>
+                                    <option>Canada</option>
+                                    <option>Australia</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" value="1990-01-15">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Settings Section -->
+        <section class="advanced-section" id="settingsSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-cog"></i>
+                        Advanced Settings
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="section-tabs">
+                            <div class="section-tab active" data-tab="security">Security</div>
+                            <div class="section-tab" data-tab="notifications">Notifications</div>
+                            <div class="section-tab" data-tab="privacy">Privacy</div>
+                            <div class="section-tab" data-tab="appearance">Appearance</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-container">
+                    <div class="form-card">
+                        <h3>Security Settings</h3>
+                        
+                        <div class="security-item">
+                            <div class="security-info">
+                                <h4>Two-Factor Authentication</h4>
+                                <p>Add an extra layer of security to your account</p>
+                            </div>
+                            <div class="security-action">
+                                <span class="security-badge enabled">
+                                    <i class="fas fa-check-circle"></i>
+                                    Enabled
+                                </span>
+                                <button class="btn btn-outline btn-sm">Manage</button>
+                            </div>
+                        </div>
+                        
+                        <div class="security-item">
+                            <div class="security-info">
+                                <h4>Login History</h4>
+                                <p>Review your recent account activity</p>
+                            </div>
+                            <div class="security-action">
+                                <button class="btn btn-outline btn-sm">View History</button>
+                            </div>
+                        </div>
+                        
+                        <div class="security-item">
+                            <div class="security-info">
+                                <h4>API Keys</h4>
+                                <p>Manage your application access keys</p>
+                            </div>
+                            <div class="security-action">
+                                <button class="btn btn-outline btn-sm">Manage Keys</button>
+                            </div>
+                        </div>
+                        
+                        <div class="security-item">
+                            <div class="security-info">
+                                <h4>Device Management</h4>
+                                <p>View and manage devices connected to your account</p>
+                            </div>
+                            <div class="security-action">
+                                <button class="btn btn-outline btn-sm">Manage Devices</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>Notification Preferences</h3>
+                        
+                        <div class="preference-item">
+                            <div class="preference-info">
+                                <h4>Email Notifications</h4>
+                                <p>Receive important updates via email</p>
+                            </div>
+                            <div class="preference-action">
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="preference-item">
+                            <div class="preference-info">
+                                <h4>Push Notifications</h4>
+                                <p>Get alerts on your device</p>
+                            </div>
+                            <div class="preference-action">
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="preference-item">
+                            <div class="preference-info">
+                                <h4>Trading Alerts</h4>
+                                <p>Notifications for price movements and signals</p>
+                            </div>
+                            <div class="preference-action">
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="preference-item">
+                            <div class="preference-info">
+                                <h4>Security Alerts</h4>
+                                <p>Get notified about important security events</p>
+                            </div>
+                            <div class="preference-action">
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Help Center Section -->
+        <section class="advanced-section" id="helpCenterSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-question-circle"></i>
+                        Help Center
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search help articles...">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-container">
+                    <div class="form-card">
+                        <h3>Popular Topics</h3>
+                        <div class="help-categories">
+                            <div class="help-category">
+                                <div class="category-icon">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <h4>Account & Security</h4>
+                                <p>Managing your account and security settings</p>
+                            </div>
+                            
+                            <div class="help-category">
+                                <div class="category-icon">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                <h4>Trading & Fees</h4>
+                                <p>How to trade and understand our fee structure</p>
+                            </div>
+                            
+                            <div class="help-category">
+                                <div class="category-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <h4>Deposits & Withdrawals</h4>
+                                <p>Moving funds in and out of your account</p>
+                            </div>
+                            
+                            <div class="help-category">
+                                <div class="category-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <h4>Crypto Assets</h4>
+                                <p>Information about supported cryptocurrencies</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <h4>How do I enable two-factor authentication?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>To enable 2FA, go to your Security Settings and click on "Two-Factor Authentication". Follow the instructions to set it up using an authenticator app like Google Authenticator or Authy.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <h4>What are the trading fees on NexusPro?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Our fee structure is based on a maker-taker model. Makers pay 0.10% and takers pay 0.20%. Fees decrease based on your 30-day trading volume and NEXUS token holdings.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <h4>How long do withdrawals take?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Withdrawal processing times vary by cryptocurrency. Most withdrawals are processed within 30 minutes, but can take longer during periods of network congestion.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="help-contact">
+                            <h4>Still need help?</h4>
+                            <p>Contact our support team for assistance</p>
+                            <button class="btn btn-primary">Contact Support</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transaction History Section -->
+        <section class="advanced-section" id="transactionHistorySection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-history"></i>
+                        Transaction History
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="section-tabs">
+                            <div class="section-tab active" data-tab="all">All</div>
+                            <div class="section-tab" data-tab="deposits">Deposits</div>
+                            <div class="section-tab" data-tab="withdrawals">Withdrawals</div>
+                            <div class="section-tab" data-tab="trades">Trades</div>
+                        </div>
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-download"></i>
+                            Export CSV
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <label>Date Range</label>
+                        <select>
+                            <option>Last 7 days</option>
+                            <option selected>Last 30 days</option>
+                            <option>Last 90 days</option>
+                            <option>Custom</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Asset</label>
+                        <select>
+                            <option>All Assets</option>
+                            <option>BTC</option>
+                            <option>ETH</option>
+                            <option>USDT</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select>
+                            <option>All Statuses</option>
+                            <option>Completed</option>
+                            <option>Pending</option>
+                            <option>Failed</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="transaction-list">
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <div class="transaction-icon">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div>
+                                <h4>BTC Deposit</h4>
+                                <p>From: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</p>
+                                <span class="transaction-date">Today, 14:32</span>
+                            </div>
+                        </div>
+                        <div class="transaction-amount">
+                            <div class="amount">+0.12500000 BTC</div>
+                            <div class="status completed">Completed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item withdrawal">
+                        <div class="transaction-info">
+                            <div class="transaction-icon">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <div>
+                                <h4>ETH Withdrawal</h4>
+                                <p>To: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e</p>
+                                <span class="transaction-date">Yesterday, 09:15</span>
+                            </div>
+                        </div>
+                        <div class="transaction-amount">
+                            <div class="amount">-2.50000000 ETH</div>
+                            <div class="status completed">Completed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <div class="transaction-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div>
+                                <h4>BTC/USDT Trade</h4>
+                                <p>Market Buy</p>
+                                <span class="transaction-date">Oct 12, 2023, 16:45</span>
+                            </div>
+                        </div>
+                        <div class="transaction-amount">
+                            <div class="amount">+0.01500000 BTC</div>
+                            <div class="status completed">Completed</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <button class="btn btn-outline btn-sm" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <span>Page 1 of 5</span>
+                    <button class="btn btn-outline btn-sm">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2FA Authentication Section -->
+        <section class="advanced-section" id="twoFactorSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Two-Factor Authentication
+                    </h2>
+                </div>
+                
+                <div class="profile-container">
+                    <div class="form-card">
+                        <h3>2FA Security</h3>
+                        <div class="security-status">
+                            <div class="status-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="status-info">
+                                <h4>Two-Factor Authentication is Enabled</h4>
+                                <p>Your account is protected with an extra layer of security</p>
+                            </div>
+                        </div>
+                        
+                        <div class="backup-codes">
+                            <h4>Backup Codes</h4>
+                            <p>Save these codes in a secure place. Each code can be used once if you lose access to your authenticator app.</p>
+                            <div class="codes-grid">
+                                <span>ABCD-EFGH-IJKL</span>
+                                <span>MNOP-QRST-UVWX</span>
+                                <span>YZ12-3456-7890</span>
+                                <span>ABCD-EFGH-IJKL</span>
+                                <span>MNOP-QRST-UVWX</span>
+                                <span>YZ12-3456-7890</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm">
+                                <i class="fas fa-redo"></i>
+                                Generate New Codes
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>Manage 2FA</h3>
+                        <div class="form-group">
+                            <label>Current Authentication Method</label>
+                            <div class="method-card">
+                                <div class="method-info">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <div>
+                                        <h4>Authenticator App</h4>
+                                        <p>Using Google Authenticator</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline btn-sm">Change</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Disable Two-Factor Authentication</label>
+                            <p>We strongly recommend keeping 2FA enabled for account security.</p>
+                            <button class="btn btn-negative">Disable 2FA</button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Recent 2FA Activity</label>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-info">
+                                        <h4>2FA Login</h4>
+                                        <p>New York, US • Chrome Browser</p>
+                                        <span class="activity-date">Today, 14:32</span>
+                                    </div>
+                                    <div class="activity-status completed">Success</div>
+                                </div>
+                                
+                                <div class="activity-item">
+                                    <div class="activity-info">
+                                        <h4>2FA Login</h4>
+                                        <p>London, UK • Firefox Browser</p>
+                                        <span class="activity-date">Yesterday, 09:15</span>
+                                    </div>
+                                    <div class="activity-status completed">Success</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Referral Program Section -->
+        <section class="advanced-section" id="referralSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-users"></i>
+                        Referral Program
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="section-tabs">
+                            <div class="section-tab active" data-tab="overview">Overview</div>
+                            <div class="section-tab" data-tab="friends">Friends</div>
+                            <div class="section-tab" data-tab="rewards">Rewards</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">Referred Friends</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$245.50</div>
+                        <div class="stat-label">Total Earnings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$1,240</div>
+                        <div class="stat-label">Friend Trading Volume</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">15%</div>
+                        <div class="stat-label">Commission Rate</div>
+                    </div>
+                </div>
+                
+                <div class="profile-container">
+                    <div class="form-card">
+                        <h3>Your Referral Link</h3>
+                        <div class="referral-link">
+                            <input type="text" value="https://nexuspro.com/signup?ref=JOHNDOE123" readonly>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fas fa-copy"></i>
+                                Copy
+                            </button>
+                        </div>
+                        
+                        <div class="share-options">
+                            <h4>Share Your Link</h4>
+                            <div class="share-buttons">
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fab fa-twitter"></i>
+                                    Twitter
+                                </button>
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fab fa-facebook"></i>
+                                    Facebook
+                                </button>
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fab fa-telegram"></i>
+                                    Telegram
+                                </button>
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fas fa-envelope"></i>
+                                    Email
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="referral-terms">
+                            <h4>How It Works</h4>
+                            <ul>
+                                <li>Share your unique referral link with friends</li>
+                                <li>Your friend signs up and verifies their account</li>
+                                <li>You earn 15% commission on their trading fees for 90 days</li>
+                                <li>Your friend gets $10 in BTC after their first trade</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>Referral Rewards History</h3>
+                        <div class="rewards-history">
+                            <div class="reward-item">
+                                <div class="reward-info">
+                                    <h4>Commission from Sarah M.</h4>
+                                    <p>BTC/USDT trade</p>
+                                    <span class="reward-date">Oct 15, 2023</span>
+                                </div>
+                                <div class="reward-amount positive">+$12.50</div>
+                            </div>
+                            
+                            <div class="reward-item">
+                                <div class="reward-info">
+                                    <h4>Commission from Mike T.</h4>
+                                    <p>ETH/USDT trade</p>
+                                    <span class="reward-date">Oct 10, 2023</span>
+                                </div>
+                                <div class="reward-amount positive">+$8.75</div>
+                            </div>
+                            
+                            <div class="reward-item">
+                                <div class="reward-info">
+                                    <h4>Commission from Alex K.</h4>
+                                    <p>SOL/USDT trade</p>
+                                    <span class="reward-date">Oct 5, 2023</span>
+                                </div>
+                                <div class="reward-amount positive">+$15.20</div>
+                            </div>
+                        </div>
+                        
+                        <div class="pagination">
+                            <button class="btn btn-outline btn-sm" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                                Previous
+                            </button>
+                            <span>Page 1 of 2</span>
+                            <button class="btn btn-outline btn-sm">
+                                Next
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Savings Section -->
+        <section class="advanced-section" id="savingsSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-piggy-bank"></i>
+                        Savings
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="section-tabs">
+                            <div class="section-tab active" data-tab="flexible">Flexible</div>
+                            <div class="section-tab" data-tab="locked">Locked</div>
+                            <div class="section-tab" data-tab="history">History</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">$8,450</div>
+                        <div class="stat-label">Total Savings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value positive">+$245.50</div>
+                        <div class="stat-label">Total Earnings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">5.2%</div>
+                        <div class="stat-label">Avg. APY</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">Active Products</div>
+                    </div>
+                </div>
+                
+                <div class="card-grid">
+                    <div class="advanced-card">
+                        <div class="card-header">
+                            <h3>Flexible Savings</h3>
+                            <div class="apy-badge positive">3.8% APY</div>
+                        </div>
+                        <div class="card-content">
+                            <p>Earn interest with no lock-up period</p>
+                            <div class="card-details">
+                                <div class="detail">
+                                    <span>Minimum:</span>
+                                    <span>$10</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Withdrawal:</span>
+                                    <span>Instant</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Interest:</span>
+                                    <span>Daily</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary">Deposit</button>
+                            <button class="btn btn-outline">Withdraw</button>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-card">
+                        <div class="card-badge">Popular</div>
+                        <div class="card-header">
+                            <h3>30-Day Fixed</h3>
+                            <div class="apy-badge positive">6.2% APY</div>
+                        </div>
+                        <div class="card-content">
+                            <p>Higher yields with a 30-day commitment</p>
+                            <div class="card-details">
+                                <div class="detail">
+                                    <span>Minimum:</span>
+                                    <span>$100</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Term:</span>
+                                    <span>30 days</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Interest:</span>
+                                    <span>At maturity</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary">Subscribe</button>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-card">
+                        <div class="card-header">
+                            <h3>90-Day Fixed</h3>
+                            <div class="apy-badge positive">8.5% APY</div>
+                        </div>
+                        <div class="card-content">
+                            <p>Highest yields with a 90-day commitment</p>
+                            <div class="card-details">
+                                <div class="detail">
+                                    <span>Minimum:</span>
+                                    <span>$500</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Term:</span>
+                                    <span>90 days</span>
+                                </div>
+                                <div class="detail">
+                                    <span>Interest:</span>
+                                    <span>At maturity</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NFT Marketplace Section -->
+        <section class="advanced-section" id="nftMarketplaceSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-store"></i>
+                        NFT Marketplace
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="section-tabs">
+                            <div class="section-tab active" data-tab="all">All Items</div>
+                            <div class="section-tab" data-tab="art">Art</div>
+                            <div class="section-tab" data-tab="collectibles">Collectibles</div>
+                            <div class="section-tab" data-tab="photography">Photography</div>
+                        </div>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search NFTs...">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <label>Price</label>
+                        <select>
+                            <option>All Prices</option>
+                            <option>Under 0.1 ETH</option>
+                            <option>0.1 to 1 ETH</option>
+                            <option>Over 1 ETH</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select>
+                            <option>Buy Now</option>
+                            <option>On Auction</option>
+                            <option>New</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Sort By</label>
+                        <select>
+                            <option>Recently Added</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Most Viewed</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="nft-grid">
+                    <div class="nft-card">
+                        <img src="https://via.placeholder.com/300x300" alt="NFT" class="nft-image">
+                        <div class="nft-content">
+                            <h3 class="nft-title">Cosmic Explorer #124</h3>
+                            <div class="nft-creator">
+                                <img src="https://i.pravatar.cc/24?img=8" alt="Creator">
+                                <span>By @cryptoartist</span>
+                            </div>
+                            <div class="nft-price">
+                                <div>
+                                    <span class="price-label">Current bid</span>
+                                    <span class="price-value">0.75 ETH</span>
+                                </div>
+                                <button class="btn btn-primary btn-sm">Place Bid</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nft-card">
+                        <img src="https://via.placeholder.com/300x300" alt="NFT" class="nft-image">
+                        <div class="nft-content">
+                            <h3 class="nft-title">Digital Dreams #45</h3>
+                            <div class="nft-creator">
+                                <img src="https://i.pravatar.cc/24?img=9" alt="Creator">
+                                <span>By @digitalcreator</span>
+                            </div>
+                            <div class="nft-price">
+                                <div>
+                                    <span class="price-label">Price</span>
+                                    <span class="price-value">1.25 ETH</span>
+                                </div>
+                                <button class="btn btn-primary btn-sm">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nft-card">
+                        <img src="https://via.placeholder.com/300x300" alt="NFT" class="nft-image">
+                        <div class="nft-content">
+                            <h3 class="nft-title">Neural Network #78</h3>
+                            <div class="nft-creator">
+                                <img src="https://i.pravatar.cc/24?img=10" alt="Creator">
+                                <span>By @aiartist</span>
+                            </div>
+                            <div class="nft-price">
+                                <div>
+                                    <span class="price-label">Current bid</span>
+                                    <span class="price-value">2.10 ETH</span>
+                                </div>
+                                <button class="btn btn-primary btn-sm">Place Bid</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <button class="btn btn-outline btn-sm" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <span>Page 1 of 12</span>
+                    <button class="btn btn-outline btn-sm">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- NFT Collections Section -->
+        <section class="advanced-section" id="nftCollectionsSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-medal"></i>
+                        NFT Collections
+                    </h2>
+                    <div class="market-table-actions">
+                        <div class="section-tabs">
+                            <div class="section-tab active" data-tab="trending">Trending</div>
+                            <div class="section-tab" data-tab="top">Top</div>
+                            <div class="section-tab" data-tab="new">New</div>
+                        </div>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search collections...">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="collections-grid">
+                    <div class="collection-card">
+                        <img src="https://via.placeholder.com/400x200" alt="Collection" class="collection-banner">
+                        <div class="collection-content">
+                            <img src="https://via.placeholder.com/80x80" alt="Collection" class="collection-logo">
+                            <h3 class="collection-title">Bored Ape Yacht Club</h3>
+                            <p class="collection-description">10,000 unique Bored Ape NFTs living on the Ethereum blockchain.</p>
+                            <div class="collection-stats">
+                                <div class="stat">
+                                    <span class="value">64.2K ETH</span>
+                                    <span class="label">Volume</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="value">12.5K</span>
+                                    <span class="label">Items</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="value">6.4K</span>
+                                    <span class="label">Owners</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-full">View Collection</button>
+                        </div>
+                    </div>
+                    
+                    <div class="collection-card">
+                        <img src="https://via.placeholder.com/400x200" alt="Collection" class="collection-banner">
+                        <div class="collection-content">
+                            <img src="https://via.placeholder.com/80x80" alt="Collection" class="collection-logo">
+                            <h3 class="collection-title">CryptoPunks</h3>
+                            <p class="collection-description">10,000 unique collectible characters with proof of ownership stored on the Ethereum blockchain.</p>
+                            <div class="collection-stats">
+                                <div class="stat">
+                                    <span class="value">825.7K ETH</span>
+                                    <span class="label">Volume</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="value">10K</span>
+                                    <span class="label">Items</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="value">3.5K</span>
+                                    <span class="label">Owners</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-full">View Collection</button>
+                        </div>
+                    </div>
+                    
+                    <div class="collection-card">
+                        <img src="https://via.placeholder.com/400x200" alt="Collection" class="collection-banner">
+                        <div class="collection-content">
+                            <img src="https://via.placeholder.com/80x80" alt="Collection" class="collection-logo">
+                            <h3 class="collection-title">Doodles</h3>
+                            <p class="collection-description">A community-driven collectibles project featuring art by Burnt Toast.</p>
+                            <div class="collection-stats">
+                                <div class="stat">
+                                    <span class="value">126.4K ETH</span>
+                                    <span class="label">Volume</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="value">10K</span>
+                                    <span class="label">Items</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="value">5.2K</span>
+                                    <span class="label">Owners</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-full">View Collection</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NFT Create Section -->
+        <section class="advanced-section" id="nftCreateSection" style="display: none;">
+            <div class="market-table-container">
+                <div class="market-table-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-paint-brush"></i>
+                        Create NFT
+                    </h2>
+                </div>
+                
+                <div class="profile-container">
+                    <div class="form-card">
+                        <h3>Upload File</h3>
+                        <div class="upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h4>Drag & drop your file here</h4>
+                            <p>Supported formats: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 100 MB.</p>
+                            <button class="btn btn-primary">Choose File</button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Preview</label>
+                            <div class="preview-container">
+                                <img src="https://via.placeholder.com/300x300" alt="Preview" id="nftPreview">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card">
+                        <h3>NFT Details</h3>
+                        <form class="modal-form">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" placeholder="e.g. Redeemable NFT Card">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea rows="4" placeholder="Provide a detailed description of your NFT"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Collection</label>
+                                <select>
+                                    <option>Select a collection</option>
+                                    <option>Create new collection</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Properties</label>
+                                <div class="properties-container">
+                                    <div class="property-row">
+                                        <input type="text" placeholder="Trait (e.g. Color)">
+                                        <input type="text" placeholder="Value (e.g. Blue)">
+                                        <button class="btn btn-negative btn-sm">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <button class="btn btn-outline btn-sm">
+                                        <i class="fas fa-plus"></i>
+                                        Add Property
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Supply</label>
+                                <input type="number" value="1" min="1">
+                                <p class="form-hint">The number of copies that can be minted. Only applicable if you choose to mint multiple copies.</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Blockchain</label>
+                                <select>
+                                    <option>Ethereum</option>
+                                    <option>Polygon</option>
+                                    <option>Binance Smart Chain</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline">Save as Draft</button>
+                                <button type="submit" class="btn btn-primary">Create NFT</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     
     <!-- Bottom Navigation -->
@@ -938,6 +3274,6 @@
         </button>
     </nav>
 
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
